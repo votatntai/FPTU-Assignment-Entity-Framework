@@ -1,0 +1,66 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<div class="row">
+    <div class="col-md-6 my-auto">
+        <div class="my-auto">
+            <div class="card-body">
+                <div class="card card-cascade wider">
+                    <div class="view view-cascade overlay">
+                        <img class="card-img-top" src="~/img/cover.png" alt="Card image cap">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <div class="card-body card-body-cascade text-center">
+                        <h5 class="blue-text pb-2"><strong>Động Thiên Thai</strong></h5>
+                        <p class="card-text">
+                            Hãy đăng nhập để có thể trải nghiệm thêm nhiều tính năng của Động Thiên Thai
+                        </p>
+                    </div>
+                    <div class="my-3">
+                        <div class="text-center wow fadeIn animated">
+                            <form class="form-elegant" id="account" method="post">
+
+                                <div class="md-form">
+                                    <input type="text" asp-for="Input.Email" class="form-control">
+                                    <label>Email</label>
+                                </div>
+
+                                <div class="md-form pb-3">
+                                    <input type="password" asp-for="Input.Password" class="form-control">
+                                    <label>Password</label>
+                                </div>
+
+                                <div class="text-center mb-3">
+                                    <button type="submit" class="btn btn-outline-light-blue btn-block btn-rounded z-depth-1a waves-effect waves-light"
+                                            style="border-radius: 30px;">
+                                        Sign in
+                                    </button>
+                                </div>
+                                <div class="row mt-5">
+                                    <p class="col-md-6 font-small grey-text d-flex justify-content-start">
+                                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                                    </p>
+                                    <p class="col-md-6 font-small grey-text d-flex justify-content-end">
+                                        Not a member?
+                                        <a class="blue-text ml-1" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                    </p>
+                                </div>
+                                <div asp-validation-summary="All" class="text-danger text-left"></div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

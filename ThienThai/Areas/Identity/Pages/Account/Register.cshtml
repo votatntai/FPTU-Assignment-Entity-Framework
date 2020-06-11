@@ -1,0 +1,67 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="my-auto">
+            <form class="form-elegant" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div class="card-body">
+                    <div class="card card-cascade wider">
+                        <div class="view view-cascade overlay">
+                            <img class="card-img-top" src="~/img/cover.png" alt="Card image cap">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <div class="card-body card-body-cascade text-center">
+                            <h5 class="blue-text pb-2"><strong>Động Thiên Thai</strong></h5>
+                            <p class="card-text">
+                                Hãy đăng ký cho mình một tài khoản để có thể trải nghiệm thêm nhiều tính năng của Động Thiên Thai
+                            </p>
+                        </div>
+                    </div>
+                    <div class="my-5">
+
+                        <div class="md-form">
+                            <input type="text" asp-for="Input.Email" required class="form-control">
+                            <label>Email</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="password" asp-for="Input.Password" required class="form-control">
+                            <label>Password</label>
+                        </div>
+
+                        <div class="md-form">
+                            <input type="password" asp-for="Input.ConfirmPassword" required class="form-control">
+                            <label>Confirm</label>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-outline-light-green btn-block btn-rounded waves-effect waves-light"
+                                    style="border-radius: 30px;">
+                                Sign up
+                            </button>
+                        </div>
+
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger text-left"></div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="col-md-6">
+
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
