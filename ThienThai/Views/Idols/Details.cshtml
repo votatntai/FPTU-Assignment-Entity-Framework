@@ -3,9 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-@{
-    ViewData["Title"] = "Details";
-}
+@{ ViewData["Title"] = "Details"; }
 
 <h2>@Model.Idols.Name's Profile</h2>
 
@@ -67,42 +65,38 @@
         <hr class="my-5">
         @if (SignInManager.IsSignedIn(User))
         {
-            <form asp-controller="Comments" asp-action="Create" method="post">
-                <div class="md-form mb-4 pink-textarea active-pink-textarea-2">
-                    <textarea id="form23" class="md-textarea form-control" rows="2" required name="Content"></textarea>
-                    <label for="form23">Reviews</label>
-                </div>
-                <input type="hidden" name="IdolID" value="@Model.Idols.ID" />
-                <input type="hidden" name="Email" value="@User.Identity.Name" />
-                <div class="text-center">
-                    <button type="submit" class="btn btn-sm btn-outline-pink btn-rounded mx-auto">Comment</button>
-                </div>
-            </form>
-        }
+<form asp-controller="Comments" asp-action="Create" method="post" id="create-comment-form">
+    <div class="md-form mb-4 pink-textarea active-pink-textarea-2">
+        <textarea id="form23" class="md-textarea form-control" rows="2" required name="Content"></textarea>
+        <label for="form23">Reviews</label>
+    </div>
+    <input type="hidden" name="IdolID" value="@Model.Idols.ID" />
+    <input type="hidden" name="Email" value="@User.Identity.Name" />
+    <div class="text-center">
+        <button type="submit" class="btn btn-sm btn-outline-pink btn-rounded mx-auto">Comment</button>
+    </div>
+</form>}
     </div>
 </div>
 
 <div class="col-md-8">
     @foreach (var items in Model.Comments)
     {
-        @if (items.IdolID == Model.Idols.ID)
+@if (items.IdolID == Model.Idols.ID)
+{
+<div class="media my-3">
+    <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="~/img/user.png"
+         alt="Avatar">
+    <div class="media-body">
+        <h5 class="mt-0 blue-text">@items.Email</h5>
+        <p class="d-inline">@items.Content</p>
+        @if (Model.Idols.Email == User.Identity.Name)
         {
-            <div class="media my-3">
-                <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="~/img/user.png"
-                     alt="Avatar">
-                <div class="media-body">
-                    <h5 class="mt-0 blue-text">@items.Email</h5>
-                    <p class="d-inline">@items.Content</p>
-                    @if (Model.Idols.Email == User.Identity.Name)
-                    {
-                        <form class="d-inline" asp-controller="Comments" asp-action="Delete">
-                            <input type="hidden" Name="ID" value="@items.ID" />
-                            <input type="hidden" Name="IdolID" value="@items.IdolID" />
-                            <button type="submit" class="btn btn-sm btn-outline-danger btn-rounded">Delete</button>
-                        </form>
-                    }
-                </div>
-            </div>
-        }
-    }
+<form class="d-inline" asp-controller="Comments" asp-action="Delete">
+    <input type="hidden" Name="ID" value="@items.ID" />
+    <input type="hidden" Name="IdolID" value="@items.IdolID" />
+    <button type="submit" class="btn btn-sm btn-outline-danger btn-rounded">Delete</button>
+</form>             }
+    </div>
+</div>}}
 </div>

@@ -21,3 +21,26 @@ $(document).ready(function () {
         });
     });
 });
+
+/*Ajax Create Comment*/
+$(function () {
+    let form = $("#create-comment-form");
+    form.on('submit', function (e) {
+        e.preventDefault();
+        let url = form.attr("action");
+        let data = form.serialize();
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function (res) {
+                if (res === "success") {
+                    location.reload();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown + textStatus);
+            }
+        });
+    });
+});

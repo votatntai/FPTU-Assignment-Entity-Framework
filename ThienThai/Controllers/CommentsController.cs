@@ -51,15 +51,14 @@ namespace ThienThai.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Content,IdolID, Email")] Comments comments)
+        public async Task<JsonResult> Create([Bind("Content,IdolID, Email")] Comments comments)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(comments);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Idols");
             }
-            return View(comments);
+            return Json("success");
         }
 
         // GET: Comments/Edit/5
@@ -139,7 +138,7 @@ namespace ThienThai.Controllers
             var comments = await _context.Comments.FindAsync(id);
             _context.Comments.Remove(comments);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Idols");
+            return RedirectToAction("Index", "Home");
         }
 
         private bool CommentsExists(int id)
