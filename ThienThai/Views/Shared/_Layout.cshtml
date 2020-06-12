@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/mdb.min.css">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/jquery-sakura.min.css">
 </head>
 <body>
     <header>
@@ -78,8 +79,14 @@
     <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="/lib/bootstrap/dist/js/mdb.min.js"></script>
+    <!-- Effect JavaScript -->
+    <script src="~/js/jquery-sakura.min.js"></script>
     <!-- Your custom scripts (optional) -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('body').sakura();
+        });
+    </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
