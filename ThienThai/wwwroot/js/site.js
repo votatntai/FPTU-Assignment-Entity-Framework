@@ -44,3 +44,15 @@ $(function () {
         });
     });
 });
+
+/*Ajax Timing
+$(function () {
+    setInterval(function () {
+        $.ajax({
+            url: "/Home/ServerTime",
+            success: function (res) {
+                $(".clock .timing").html(res);
+            }
+        })
+    }, 1000)
+});*/

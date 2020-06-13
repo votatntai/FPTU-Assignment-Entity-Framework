@@ -1,6 +1,6 @@
-﻿using Data.Entities;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
 using ThienThai.Models;
 
@@ -24,11 +24,10 @@ namespace ThienThai.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public IActionResult CreateComment(Comments comment)
+        public IActionResult ServerTime()
         {
-            return View(comment);
+            var time = DateTime.Now.ToString("HH:mm:ss");
+            return Content(time);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
