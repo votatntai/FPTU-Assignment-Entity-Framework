@@ -6,6 +6,9 @@ for details on configuring this project to bundle and minify static web assets. 
 * {
     margin: 0;
     padding: 0;
+}
+
+body {
     font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -259,5 +262,10 @@ body {
 /*Custom Font*/
 .title h2, .landing-left h2, #idols .title {
     font-family: "Great Vibes", cursive;
-    font-size: 3vw;
+    font-size: 72px;
+}
+
+.text-typed {
+    font-family: "Great Vibes", cursive !important;
+    font-size: 48px;
 }

@@ -1,0 +1,63 @@
+﻿@model dynamic
+
+@{ ViewData["Title"] = "View"; }
+
+@if (User.Identity.IsAuthenticated && User.Identity.Name.Equals("votantai4899@gmail.com"))
+{
+<div class="title">
+    <h2 class="text-center">Idols Management</h2>
+</div>
+                <table class="table table-bordered">
+                    <thead class="text-center">
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Gender
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Modify
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Idols)
+                        {
+        <tr>
+            <td>
+                @item.ID
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Gender
+            </td>
+            <td>
+                +(84) @item.Phone
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Details", "Delete", new { id = @item.ID }, new { @class = "btn btn-sm btn-outline-light-blue btn-rounded" })
+            </td>
+        </tr>
+}
+                    </tbody>
+                </table> }
+                            else
+                            {
+                <div class="text-center text-typed my-5">
+                    <a>Sorry, You are not authorized to access</a>
+                </div>}

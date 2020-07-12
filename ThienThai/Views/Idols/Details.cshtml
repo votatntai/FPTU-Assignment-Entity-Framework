@@ -65,7 +65,7 @@
         <div class="text-center">
             @*<a asp-action="Edit" asp-route-id="@Model.Idols.ID">Edit</a> |*@
             <a class="btn btn-sm btn-outline-black btn-rounded" asp-action="Index">Back to List</a>
-            <a class="btn btn-sm btn-outline-orange btn-rounded" asp-action="Index">Rent Idol</a>
+            <a class="btn btn-sm btn-outline-orange btn-rounded" asp-action="Index">Rent Player</a>
         </div>
         <hr class="my-5">
         @if (SignInManager.IsSignedIn(User))
@@ -101,7 +101,7 @@
     <input type="hidden" Name="ID" value="@items.ID" />
     <input type="hidden" Name="IdolID" value="@items.IdolID" />
     <button type="submit" class="btn btn-sm btn-outline-danger btn-rounded">Delete</button>
-</form>             }
+</form>}
     </div>
 </div>}}
 </div>

@@ -2,7 +2,6 @@
 using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ThienThai.Controllers
@@ -22,30 +21,6 @@ namespace ThienThai.Controllers
             return View(await _context.Comments.ToListAsync());
         }
 
-        // GET: Comments/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var comments = await _context.Comments
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (comments == null)
-            {
-                return NotFound();
-            }
-
-            return View(comments);
-        }
-
-        // GET: Comments/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
         // POST: Comments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -59,57 +34,6 @@ namespace ThienThai.Controllers
                 await _context.SaveChangesAsync();
             }
             return Json("success");
-        }
-
-        // GET: Comments/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var comments = await _context.Comments.FindAsync(id);
-            if (comments == null)
-            {
-                return NotFound();
-            }
-            return View(comments);
-        }
-
-        // POST: Comments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Content,Date,IdolID, Email")] Comments comments)
-        {
-            if (id != comments.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(comments);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CommentsExists(comments.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(comments);
         }
 
         // GET: Comments/Delete/5
@@ -141,9 +65,5 @@ namespace ThienThai.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        private bool CommentsExists(int id)
-        {
-            return _context.Comments.Any(e => e.ID == id);
-        }
     }
 }
